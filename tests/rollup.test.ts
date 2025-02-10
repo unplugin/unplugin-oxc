@@ -1,7 +1,7 @@
 import path from 'node:path'
 import { rollupBuild, testFixtures } from '@sxzz/test-utils'
 import { describe } from 'vitest'
-import UnpluginOxc from '../src/rollup'
+import Oxc from '../src/rollup'
 
 describe('rollup', async () => {
   const { dirname } = import.meta
@@ -11,7 +11,7 @@ describe('rollup', async () => {
       const { snapshot } = await rollupBuild(
         id,
         [
-          UnpluginOxc({
+          Oxc({
             sourcemap: id.includes('minify'),
             transform: { target: 'es2015' },
             minify: id.includes('minify')

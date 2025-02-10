@@ -12,10 +12,10 @@ import { Oxc } from './index'
  * @example
  * ```js
  * // rspack.config.js
- * import UnpluginOxc from 'unplugin-oxc/rspack'
+ * import Oxc from 'unplugin-oxc/rspack'
  *
  * default export {
- *  plugins: [UnpluginOxc()],
+ *  plugins: [Oxc()],
  * }
  * ```
  */

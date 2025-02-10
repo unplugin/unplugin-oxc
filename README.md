@@ -15,10 +15,10 @@ npm i -D unplugin-oxc
 
 ```ts
 // vite.config.ts
-import UnpluginOxc from 'unplugin-oxc/vite'
+import Oxc from 'unplugin-oxc/vite'
 
 export default defineConfig({
-  plugins: [UnpluginOxc()],
+  plugins: [Oxc()],
 })
 ```
 
@@ -29,10 +29,10 @@ export default defineConfig({
 
 ```ts
 // rollup.config.js
-import UnpluginOxc from 'unplugin-oxc/rollup'
+import Oxc from 'unplugin-oxc/rollup'
 
 export default {
-  plugins: [UnpluginOxc()],
+  plugins: [Oxc()],
 }
 ```
 
@@ -43,10 +43,10 @@ export default {
 
 ```ts
 // rolldown.config.js
-import UnpluginOxc from 'unplugin-oxc/rolldown'
+import Oxc from 'unplugin-oxc/rolldown'
 
 export default {
-  plugins: [UnpluginOxc()],
+  plugins: [Oxc()],
 }
 ```
 
@@ -57,10 +57,10 @@ export default {
 
 ```ts
 import { build } from 'esbuild'
-import UnpluginOxc from 'unplugin-oxc/esbuild'
+import Oxc from 'unplugin-oxc/esbuild'
 
 build({
-  plugins: [UnpluginOxc()],
+  plugins: [Oxc()],
 })
 ```
 
@@ -71,11 +71,11 @@ build({
 
 ```js
 // webpack.config.js
-import UnpluginOxc from 'unplugin-oxc/webpack'
+import Oxc from 'unplugin-oxc/webpack'
 
 export default {
   /* ... */
-  plugins: [UnpluginOxc()],
+  plugins: [Oxc()],
 }
 ```
 
@@ -86,11 +86,11 @@ export default {
 
 ```ts
 // rspack.config.js
-import UnpluginOxc from 'unplugin-oxc/rspack'
+import Oxc from 'unplugin-oxc/rspack'
 
 export default {
   /* ... */
-  plugins: [UnpluginOxc()],
+  plugins: [Oxc()],
 }
 ```
 

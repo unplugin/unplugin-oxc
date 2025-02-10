@@ -12,10 +12,10 @@ import { Oxc } from './index'
  * @example
  * ```js
  * // webpack.config.js
- * import UnpluginOxc from 'unplugin-oxc/webpack'
+ * import Oxc from 'unplugin-oxc/webpack'
  *
  * default export {
- *  plugins: [UnpluginOxc()],
+ *  plugins: [Oxc()],
  * }
  * ```
  */

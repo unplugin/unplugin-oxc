@@ -12,9 +12,9 @@ import { Oxc } from './index'
  * @example
  * ```ts
  * import { build } from 'esbuild'
- * import UnpluginOxc from 'unplugin-oxc/esbuild'
+ * import Oxc from 'unplugin-oxc/esbuild'
  * 
- * build({ plugins: [UnpluginOxc()] })
+ * build({ plugins: [Oxc()] })
 ```
  */
 const esbuild = Oxc.esbuild as typeof Oxc.esbuild
