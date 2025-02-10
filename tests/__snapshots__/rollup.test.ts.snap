@@ -32,11 +32,9 @@ export { Color, foo, node, num, optionalChain };
 
 exports[`rollup > entry-minify.ts 1`] = `
 "// entry-minify.js
-function foo(){return 100}try{foo();}catch(e){}
-
-export { foo };
+function foo(){return 100}try{foo()}catch(e){}export{foo};
 //# sourceMappingURL=entry-minify.js.map
 
 // entry-minify.js.map
-{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  foo()\\n} catch (err) {}\\n"],"names":["err"],"mappings":"AAAO,SAAS,GAAA,EAAc,CAC5B,OACD,GAAA,CAED,GAAI,CACF,GAAK,GACN,CAAQA,MAAAA,CAAAA,CAAK;;;;"}"
+{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  foo()\\n} catch (err) {}\\n"],"names":["err"],"mappings":"AAAO,SAAS,KAAc,CACrB,MAAA,IACR,CAED,GAAI,CACG,KAAA,AACN,OAAQA,EAAK,CAAA"}"
 `;

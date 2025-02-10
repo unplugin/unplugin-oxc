@@ -1,20 +1,33 @@
 import path from 'node:path'
-import remapping from '@ampproject/remapping'
 import { minify } from 'oxc-minify'
 import { ResolverFactory } from 'oxc-resolver'
 import { transform } from 'oxc-transform'
 import { createUnplugin, type UnpluginInstance } from 'unplugin'
 import { createFilter } from 'unplugin-utils'
 import { resolveOptions, type Options } from './core/options'
+import type { RenderedChunk } from 'rollup'
 
 export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
   (rawOptions = {}) => {
     const options = resolveOptions(rawOptions)
     const filter = createFilter(options.include, options.exclude)
 
-    const name = 'unplugin-oxc'
+    const renderChunk: any =
+      options.minify !== false
+        ? (code: string, chunk: RenderedChunk) => {
+            const result = minify(chunk.fileName, code, {
+              ...options.minify,
+              sourcemap: options.sourcemap,
+            })
+            return {
+              code: result.code,
+              map: result.map,
+            }
+          }
+        : undefined
+
     return {
-      name,
+      name: 'unplugin-oxc',
       enforce: options.enforce,
 
       resolveId:
@@ -40,34 +53,19 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       },
 
       transform:
-        options.transform !== false || options.minify !== false
+        options.transform !== false
           ? (code, id) => {
-              let map
-              if (options.transform !== false) {
-                const result = transform(id, code, {
-                  ...options.transform,
-                  sourcemap: options.sourcemap,
-                })
-                code = result.code
-                map = result.map
-              }
-
-              if (options.minify !== false) {
-                const result = minify(id, code, {
-                  ...options.minify,
-                  sourcemap: options.sourcemap,
-                })
-                code = result.code
-                if (map && result.map) {
-                  map = remapping([result.map, map], () => null, {})
-                } else {
-                  map = result.map
-                }
-              }
-
-              return { code, map }
+              const result = transform(id, code, {
+                ...options.transform,
+                sourcemap: options.sourcemap,
+              })
+              return { code: result.code, map: result.map }
             }
           : undefined,
+
+      rollup: { renderChunk },
+      rolldown: { renderChunk },
+      vite: { renderChunk },
     }
   },
 )
