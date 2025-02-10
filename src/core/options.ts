@@ -8,6 +8,7 @@ export interface Options {
   enforce?: 'pre' | 'post' | undefined
   transform?: TransformOptions
   resolve?: NapiResolveOptions
+  resolveNodeModules?: boolean
 }
 
 type Overwrite<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U
@@ -24,5 +25,6 @@ export function resolveOptions(options: Options): OptionsResolved {
     enforce: 'enforce' in options ? options.enforce : 'pre',
     transform: options.transform || {},
     resolve: options.resolve || {},
+    resolveNodeModules: options.resolveNodeModules || false,
   }
 }

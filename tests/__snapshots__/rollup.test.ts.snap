@@ -6,6 +6,8 @@ import { jsx } from 'react/jsx-runtime';
 
 const node = jsx("div", {});
 
+function foo() {}
+
 const num = 10;
 let Color = function(Color) {
 	Color[Color["Red"] = 1] = "Red";
@@ -24,6 +26,14 @@ let NS;
 })(NS || (NS = {}));
 let optionalChain = NS === null || NS === void 0 ? void 0 : NS.foo;
 
-export { Color, node, num, optionalChain };
+export { Color, foo, node, num, optionalChain };
+"
+`;
+
+exports[`rollup > mod.ts 1`] = `
+"// mod.js
+function foo() {}
+
+export { foo };
 "
 `;

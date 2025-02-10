@@ -17,6 +17,9 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
 
       async resolveId(id, importer) {
         if (!importer) return
+        if (!options.resolveNodeModules && id[0] !== '.' && id[0] !== '/')
+          return
+
         const resolver = new ResolverFactory({
           extensions: ['.ts', '.mts', '.cts', '.tsx'],
           ...options.resolve,

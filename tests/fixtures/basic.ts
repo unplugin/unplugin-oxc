@@ -1,4 +1,5 @@
 export * from './tsx'
+export * from './mod'
 
 export const num: number = 10
 
