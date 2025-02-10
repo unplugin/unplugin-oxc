@@ -1,4 +1,6 @@
 import path from 'node:path'
+import remapping from '@ampproject/remapping'
+import { minify } from 'oxc-minify'
 import { ResolverFactory } from 'oxc-resolver'
 import { transform } from 'oxc-transform'
 import { createUnplugin, type UnpluginInstance } from 'unplugin'
@@ -15,33 +17,57 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       name,
       enforce: options.enforce,
 
-      async resolveId(id, importer) {
-        if (!importer) return
-        if (!options.resolveNodeModules && id[0] !== '.' && id[0] !== '/')
-          return
+      resolveId:
+        options.resolve !== false
+          ? async (id, importer) => {
+              if (!importer) return
+              if (!options.resolveNodeModules && id[0] !== '.' && id[0] !== '/')
+                return
 
-        const resolver = new ResolverFactory({
-          extensions: ['.ts', '.mts', '.cts', '.tsx'],
-          ...options.resolve,
-        })
-        const directory = path.dirname(importer)
-        const resolved = await resolver.async(directory, id)
+              const resolver = new ResolverFactory({
+                extensions: ['.ts', '.mts', '.cts', '.tsx'],
+                ...options.resolve,
+              })
+              const directory = path.dirname(importer)
+              const resolved = await resolver.async(directory, id)
 
-        if (resolved.path) return resolved.path
-      },
+              if (resolved.path) return resolved.path
+            }
+          : undefined,
 
       transformInclude(id) {
         return filter(id)
       },
 
-      transform(code, id) {
-        const result = transform(id, code, options.transform)
+      transform:
+        options.transform !== false || options.minify !== false
+          ? (code, id) => {
+              let map
+              if (options.transform !== false) {
+                const result = transform(id, code, {
+                  ...options.transform,
+                  sourcemap: options.sourcemap,
+                })
+                code = result.code
+                map = result.map
+              }
 
-        return {
-          code: result.code,
-          map: result.map,
-        }
-      },
+              if (options.minify !== false) {
+                const result = minify(id, code, {
+                  ...options.minify,
+                  sourcemap: options.sourcemap,
+                })
+                code = result.code
+                if (map && result.map) {
+                  map = remapping([result.map, map], () => null, {})
+                } else {
+                  map = result.map
+                }
+              }
+
+              return { code, map }
+            }
+          : undefined,
     }
   },
 )

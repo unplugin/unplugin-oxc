@@ -6,15 +6,22 @@ import UnpluginOxc from '../src/rollup'
 describe('rollup', async () => {
   const { dirname } = import.meta
   await testFixtures(
-    '*.ts',
+    'entry-*.ts',
     async (args, id) => {
-      const { snapshot } = await rollupBuild(id, [
-        UnpluginOxc({
-          transform: {
-            target: 'es2015',
-          },
-        }),
-      ])
+      const { snapshot } = await rollupBuild(
+        id,
+        [
+          UnpluginOxc({
+            sourcemap: id.includes('minify'),
+            transform: { target: 'es2015' },
+            minify: id.includes('minify')
+              ? { compress: { target: 'es2015' } }
+              : false,
+          }),
+        ],
+        undefined,
+        { sourcemap: id.includes('minify') },
+      )
       return snapshot
     },
     { cwd: path.resolve(dirname, 'fixtures'), promise: true },

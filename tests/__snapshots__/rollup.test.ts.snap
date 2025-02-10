@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`rollup > basic.ts 1`] = `
-"// basic.js
+exports[`rollup > entry-basic.ts 1`] = `
+"// entry-basic.js
 import { jsx } from 'react/jsx-runtime';
 
 const node = jsx("div", {});
@@ -30,10 +30,13 @@ export { Color, foo, node, num, optionalChain };
 "
 `;
 
-exports[`rollup > mod.ts 1`] = `
-"// mod.js
-function foo() {}
+exports[`rollup > entry-minify.ts 1`] = `
+"// entry-minify.js
+function foo(){return 100}try{foo();}catch(e){}
 
 export { foo };
-"
+//# sourceMappingURL=entry-minify.js.map
+
+// entry-minify.js.map
+{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  foo()\\n} catch (err) {}\\n"],"names":["err"],"mappings":"AAAO,SAAS,GAAA,EAAc,CAC5B,OACD,GAAA,CAED,GAAI,CACF,GAAK,GACN,CAAQA,MAAAA,CAAAA,CAAK;;;;"}"
 `;
