@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`rollup > basic.ts 1`] = `
+"// basic.js
+import { jsx } from 'react/jsx-runtime';
+
+const node = jsx("div", {});
+
+const num = 10;
+let Color = function(Color) {
+	Color[Color["Red"] = 1] = "Red";
+	Color[Color["Green"] = 2] = "Green";
+	Color[Color["Blue"] = 3] = "Blue";
+	return Color;
+}({});
+class Test {
+	constructor(field = 10) {
+		this.field = field;
+	}
+}
+let NS;
+(function(_NS) {
+	const foo = _NS.foo = 1;
+})(NS || (NS = {}));
+let optionalChain = NS === null || NS === void 0 ? void 0 : NS.foo;
+
+export { Color, node, num, optionalChain };
+"
+`;
