@@ -11,6 +11,9 @@ importers:
       oxc-resolver:
         specifier: ^4.0.0
         version: 4.0.0
+      oxc-transform:
+        specifier: ^0.48.2
+        version: 0.48.2
       unplugin:
         specifier: ^2.1.2
         version: 2.1.2
@@ -36,9 +39,6 @@ importers:
       eslint:
         specifier: ^9.20.0
         version: 9.20.0(jiti@2.4.2)
-      oxc-transform:
-        specifier: ^0.48.2
-        version: 0.48.2
       prettier:
         specifier: ^3.5.0
         version: 3.5.0
