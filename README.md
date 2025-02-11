@@ -2,7 +2,15 @@
 
 [![Unit Test](https://github.com/unplugin/unplugin-oxc/actions/workflows/unit-test.yml/badge.svg)](https://github.com/unplugin/unplugin-oxc/actions/workflows/unit-test.yml)
 
-Oxc integration for unplugin.
+[Oxc](https://oxc.rs/) integration for unplugin.
+
+## Features
+
+- 🚀 **Blazing Fast**: Transform, resolve, and minify files with Oxc, built in Rust.
+- 🦾 **Powerful**: Supports TypeScript and React JSX transformation, identifier replacement, syntax lowering, and more.
+- 📦 **Zero Config**: No configuration needed for TypeScript support.
+- 🎨 **Customizable**: Fine-tune transform, resolve, and minify options.
+- 😈 **Drop-in Replacement**: Easily replace [rollup-plugin-esbuild](https://github.com/egoist/rollup-plugin-esbuild).
 
 ## Installation
 
@@ -109,6 +117,41 @@ export default defineConfig({
 ```
 
 <br></details>
+
+## Usage
+
+```ts
+interface Options {
+  /**
+   * @default [/\.[cm]?[jt]sx?$/],
+   */
+  include?: FilterPattern
+  /**
+   * @default [/node_modules/],
+   */
+  exclude?: FilterPattern
+  enforce?: 'pre' | 'post' | undefined
+  /**
+   * Transform options passed to `oxc-transform`
+   */
+  transform?: Omit<TransformOptions, 'sourcemap'> | false
+  /**
+   * Resolve options passed to `oxc-resolver`
+   */
+  resolve?: NapiResolveOptions | false
+  /**
+   * The plugin will skip resolving node_modules by default.
+   * Set this to `true` to resolve node_modules.
+   * @default false
+   */
+  resolveNodeModules?: boolean
+  /**
+   * Minify options passed to `oxc-minify`
+   */
+  minify?: Omit<MinifyOptions, 'sourcemap'> | false
+  sourcemap?: boolean
+}
+```
 
 ## Sponsors
 

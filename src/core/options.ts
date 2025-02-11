@@ -4,12 +4,32 @@ import type { TransformOptions } from 'oxc-transform'
 import type { FilterPattern } from 'unplugin-utils'
 
 export interface Options {
+  /**
+   * @default [/\.[cm]?[jt]sx?$/],
+   */
   include?: FilterPattern
+  /**
+   * @default [/node_modules/],
+   */
   exclude?: FilterPattern
   enforce?: 'pre' | 'post' | undefined
+  /**
+   * Transform options passed to `oxc-transform`
+   */
   transform?: Omit<TransformOptions, 'sourcemap'> | false
+  /**
+   * Resolve options passed to `oxc-resolver`
+   */
   resolve?: NapiResolveOptions | false
+  /**
+   * The plugin will skip resolving node_modules by default.
+   * Set this to `true` to resolve node_modules.
+   * @default false
+   */
   resolveNodeModules?: boolean
+  /**
+   * Minify options passed to `oxc-minify`
+   */
   minify?: Omit<MinifyOptions, 'sourcemap'> | false
   sourcemap?: boolean
 }
