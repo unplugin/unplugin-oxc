@@ -58,6 +58,10 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 ...options.transform,
                 sourcemap: options.sourcemap,
               })
+              if (result.errors.length)
+                throw new SyntaxError(
+                  result.errors.map((error) => error.message).join('\n'),
+                )
               return { code: result.code, map: result.map }
             }
           : undefined,
