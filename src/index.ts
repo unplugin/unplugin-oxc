@@ -9,8 +9,8 @@ import { resolveOptions, type Options } from './core/options'
 import type { RenderedChunk } from 'rollup'
 
 export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
-  (rawOptions = {}) => {
-    const options = resolveOptions(rawOptions)
+  (rawOptions = {}, { framework }) => {
+    const options = resolveOptions(rawOptions, framework)
     const filter = createFilter(options.include, options.exclude)
 
     const renderChunk: any =
@@ -70,6 +70,9 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       rolldown: { renderChunk },
       vite: { renderChunk },
       unloader: {
+        options(config) {
+          config.sourcemap ||= options.sourcemap
+        },
         async load(id) {
           if (!filter(id)) return
           const contents = await readFile(id, 'utf8')

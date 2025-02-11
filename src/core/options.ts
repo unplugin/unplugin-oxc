@@ -1,6 +1,7 @@
 import type { MinifyOptions } from 'oxc-minify'
 import type { NapiResolveOptions } from 'oxc-resolver'
 import type { TransformOptions } from 'oxc-transform'
+import type { UnpluginContextMeta } from 'unplugin'
 import type { FilterPattern } from 'unplugin-utils'
 
 export interface Options {
@@ -31,6 +32,9 @@ export interface Options {
    * Minify options passed to `oxc-minify`
    */
   minify?: Omit<MinifyOptions, 'sourcemap'> | false
+  /**
+   * Default: `true` on unloader, `false` on others.
+   */
   sourcemap?: boolean
 }
 
@@ -41,7 +45,10 @@ export type OptionsResolved = Overwrite<
   Pick<Options, 'enforce'>
 >
 
-export function resolveOptions(options: Options): OptionsResolved {
+export function resolveOptions(
+  options: Options,
+  framework: UnpluginContextMeta['framework'],
+): OptionsResolved {
   return {
     include: options.include || [/\.[cm]?[jt]sx?$/],
     exclude: options.exclude || [/node_modules/],
@@ -50,6 +57,6 @@ export function resolveOptions(options: Options): OptionsResolved {
     resolve: options.resolve || {},
     resolveNodeModules: options.resolveNodeModules || false,
     minify: options.minify || false,
-    sourcemap: options.sourcemap || false,
+    sourcemap: options.sourcemap ?? framework === 'unloader',
   }
 }
