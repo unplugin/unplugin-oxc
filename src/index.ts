@@ -1,3 +1,4 @@
+import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { minify } from 'oxc-minify'
 import { ResolverFactory } from 'oxc-resolver'
@@ -33,7 +34,6 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       resolveId:
         options.resolve !== false
           ? async (id, importer) => {
-              if (!importer) return
               if (!options.resolveNodeModules && id[0] !== '.' && id[0] !== '/')
                 return
 
@@ -41,9 +41,8 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 extensions: ['.ts', '.mts', '.cts', '.tsx'],
                 ...options.resolve,
               })
-              const directory = path.dirname(importer)
+              const directory = path.dirname(importer || id)
               const resolved = await resolver.async(directory, id)
-
               if (resolved.path) return resolved.path
             }
           : undefined,
@@ -66,6 +65,13 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       rollup: { renderChunk },
       rolldown: { renderChunk },
       vite: { renderChunk },
+      unloader: {
+        async load(id) {
+          if (!filter(id)) return
+          const contents = await readFile(id, 'utf8')
+          return contents
+        },
+      },
     }
   },
 )
