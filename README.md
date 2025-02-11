@@ -96,6 +96,20 @@ export default {
 
 <br></details>
 
+<details>
+<summary>unloader</summary><br>
+
+```ts
+// unloader.config.ts
+import Oxc from 'unplugin-oxc/unloader'
+
+export default defineConfig({
+  plugins: [Oxc()],
+})
+```
+
+<br></details>
+
 ## Sponsors
 
 <p align="center">
