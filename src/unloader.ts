@@ -20,6 +20,6 @@ import { Oxc } from './index'
  * ```
  */
 const unloader = Oxc.unloader as typeof Oxc.unloader
-// eslint-disable-next-line import/no-default-export
+
 export default unloader
 export { unloader as 'module.exports' }
