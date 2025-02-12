@@ -17,7 +17,7 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       options.minify !== false
         ? (code: string, chunk: RenderedChunk) => {
             const result = minify(chunk.fileName, code, {
-              ...options.minify,
+              ...(options.minify === true ? {} : options.minify),
               sourcemap: options.sourcemap,
             })
             return {

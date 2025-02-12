@@ -31,7 +31,7 @@ export interface Options {
   /**
    * Minify options passed to `oxc-minify`
    */
-  minify?: Omit<MinifyOptions, 'sourcemap'> | false
+  minify?: Omit<MinifyOptions, 'sourcemap'> | boolean
   /**
    * Default: `true` on unloader, `false` on others.
    */
