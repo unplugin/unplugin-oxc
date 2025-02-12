@@ -14,13 +14,18 @@ describe('rollup', async () => {
           Oxc({
             resolveNodeModules: id.includes('resolve'),
             sourcemap: id.includes('minify'),
-            transform: { target: 'es2015' },
+            transform: {
+              target: 'es2015',
+              jsx: {
+                runtime: 'classic',
+              },
+            },
             minify: id.includes('minify')
               ? { compress: { target: 'es2015' } }
               : false,
           }),
         ],
-        undefined,
+        { onwarn: undefined },
         { sourcemap: id.includes('minify') },
       )
       return snapshot

@@ -2,9 +2,7 @@
 
 exports[`rollup > entry-basic.ts 1`] = `
 "// entry-basic.js
-import { jsx } from 'react/jsx-runtime';
-
-const node = jsx("div", {});
+const node = React.createElement("div", null);
 
 function foo() {}
 
