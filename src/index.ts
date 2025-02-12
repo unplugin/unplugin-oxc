@@ -1,7 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import { minify } from 'oxc-minify'
 import { ResolverFactory } from 'oxc-resolver'
 import { transform } from 'oxc-transform'
 import { createUnplugin, type UnpluginInstance } from 'unplugin'
@@ -16,7 +15,8 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
 
     const renderChunk: any =
       options.minify !== false
-        ? (code: string, chunk: RenderedChunk) => {
+        ? async (code: string, chunk: RenderedChunk) => {
+            const { minify } = await import('oxc-minify')
             const result = minify(chunk.fileName, code, {
               ...(options.minify === true ? {} : options.minify),
               sourcemap: options.sourcemap,
