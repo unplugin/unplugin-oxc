@@ -69,11 +69,11 @@
     "unloader": "*"
   },
   "dependencies": {
-    "oxc-minify": "^0.49.0",
+    "oxc-minify": "^0.50.0",
     "oxc-resolver": "^4.0.0",
-    "oxc-transform": "^0.49.0",
+    "oxc-transform": "^0.50.0",
     "unplugin": "^2.2.0",
-    "unplugin-utils": "^0.2.3"
+    "unplugin-utils": "^0.2.4"
   },
   "devDependencies": {
     "@sxzz/eslint-config": "^5.0.2",
@@ -81,7 +81,7 @@
     "@sxzz/test-utils": "^0.5.1",
     "@types/node": "^22.13.1",
     "bumpp": "^10.0.3",
-    "eslint": "^9.20.0",
+    "eslint": "^9.20.1",
     "prettier": "^3.5.0",
     "rollup": "^4.34.6",
     "tsdown": "^0.5.9",
