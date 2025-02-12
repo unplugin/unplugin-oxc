@@ -63,7 +63,11 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 : process.cwd()
               const resolved = await resolver.async(directory, id)
               if (resolved.error?.startsWith('Builtin module')) {
-                return { id, external: true }
+                return {
+                  id,
+                  external: true,
+                  moduleSideEffects: false,
+                }
               }
 
               if (resolved.path) return resolved.path
