@@ -12,6 +12,7 @@ describe('rollup', async () => {
         id,
         [
           Oxc({
+            resolveNodeModules: id.includes('resolve'),
             sourcemap: id.includes('minify'),
             transform: { target: 'es2015' },
             minify: id.includes('minify')

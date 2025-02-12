@@ -38,7 +38,23 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 return
 
               const resolver = new ResolverFactory({
-                extensions: ['.ts', '.mts', '.cts', '.tsx'],
+                extensions: [
+                  '.mjs',
+                  '.js',
+                  '.ts',
+                  '.jsx',
+                  '.tsx',
+                  '.json',
+                  '.node',
+                ],
+                conditionNames: [
+                  'import',
+                  'require',
+                  'browser',
+                  'node',
+                  'default',
+                ],
+                builtinModules: true,
                 ...options.resolve,
               })
               const directory = path.dirname(importer || id)

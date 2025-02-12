@@ -10,7 +10,7 @@
 - 🦾 **Powerful**: Supports TypeScript and React JSX transformation, identifier replacement, syntax lowering, and more.
 - 📦 **Zero Config**: No configuration needed for TypeScript support.
 - 🎨 **Customizable**: Fine-tune transform, resolve, and minify options.
-- 😈 **Drop-in Replacement**: Easily replace [rollup-plugin-esbuild](https://github.com/egoist/rollup-plugin-esbuild).
+- 😈 **Drop-in Replacement**: Easily replace [rollup-plugin-esbuild](https://github.com/egoist/rollup-plugin-esbuild) and [@rollup/plugin-node-resolve](https://github.com/rollup/plugins/tree/master/packages/node-resolve).
 
 ## Installation
 

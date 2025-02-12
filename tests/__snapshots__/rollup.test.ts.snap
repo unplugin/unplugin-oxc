@@ -38,3 +38,57 @@ function foo(){return 100}try{foo()}catch(e){}export{foo};
 // entry-minify.js.map
 {"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  foo()\\n} catch (err) {}\\n"],"names":["err"],"mappings":"AAAO,SAAS,KAAc,CACrB,MAAA,IACR,CAED,GAAI,CACG,KAAA,AACN,OAAQA,EAAK,CAAA"}"
 `;
+
+exports[`rollup > entry-resolve.ts 1`] = `
+"// entry-resolve.js
+import path from 'node:path';
+import assert from 'assert';
+
+// @ts-check
+
+/** @type {import('prettier').Config} */
+var prettier = {
+  semi: false,
+  singleQuote: true,
+  trailingComma: 'all',
+  overrides: [
+    {
+      files: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/output/**',
+        '**/coverage/**',
+        '**/temp/**',
+        '**/.vitepress/cache/**',
+        '**/.nuxt/**',
+        '**/.vercel/**',
+        '**/.changeset/**',
+        '**/.idea/**',
+        '**/.output/**',
+        '**/.vite-inspect/**',
+
+        '**/CHANGELOG*.md',
+        '**/*.min.*',
+        '**/LICENSE*',
+        '**/__snapshots__',
+        '**/auto-import?(s).d.ts',
+        '**/components.d.ts',
+        '**/typed-router.d.ts',
+        '**/pnpm-lock.yaml',
+      ],
+      options: {
+        requirePragma: true,
+      },
+    },
+    {
+      files: ['**/jsr.json'],
+      options: {
+        parser: 'json-stringify',
+      },
+    },
+  ],
+};
+
+console.log(path, assert, prettier);
+"
+`;
