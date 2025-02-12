@@ -1,3 +1,4 @@
+// @ts-nocheck
 export * from './tsx'
 export * from './mod'
 
