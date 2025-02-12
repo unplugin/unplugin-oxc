@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
+import process from 'node:process'
 import { minify } from 'oxc-minify'
 import { ResolverFactory } from 'oxc-resolver'
 import { transform } from 'oxc-transform'
@@ -57,7 +58,9 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 builtinModules: true,
                 ...options.resolve,
               })
-              const directory = path.dirname(importer || id)
+              const directory = importer
+                ? path.dirname(importer)
+                : process.cwd()
               const resolved = await resolver.async(directory, id)
               if (resolved.error?.startsWith('Builtin module')) {
                 return { id, external: true }
