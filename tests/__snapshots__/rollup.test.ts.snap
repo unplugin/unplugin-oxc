@@ -54,7 +54,6 @@ var prettier = {
       files: [
         '**/node_modules/**',
         '**/dist/**',
-        '**/output/**',
         '**/coverage/**',
         '**/temp/**',
         '**/.vitepress/cache/**',
@@ -64,6 +63,9 @@ var prettier = {
         '**/.idea/**',
         '**/.output/**',
         '**/.vite-inspect/**',
+
+        // root directory
+        'output/**',
 
         '**/CHANGELOG*.md',
         '**/*.min.*',
