@@ -68,6 +68,11 @@
   "peerDependencies": {
     "unloader": "*"
   },
+  "peerDependenciesMeta": {
+    "unloader": {
+      "optional": true
+    }
+  },
   "dependencies": {
     "oxc-minify": "^0.53.0",
     "oxc-resolver": "^4.2.0",
