@@ -36,7 +36,11 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       resolveId:
         options.resolve !== false
           ? (id, importer, resolveOptions: any) => {
-              if (!options.resolveNodeModules && id[0] !== '.' && id[0] !== '/')
+              if (
+                !options.resolveNodeModules &&
+                id[0] !== '.' &&
+                !path.isAbsolute(id)
+              )
                 return
 
               const resolver = new ResolverFactory({
@@ -68,9 +72,13 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
               }
 
               if (resolved.path) {
+                const format =
+                  getModuleFormat(resolved.path) ||
+                  resolved.moduleType ||
+                  'commonjs'
                 return {
                   id: resolved.path,
-                  format: getModuleFormat(resolved.path, resolved.moduleType),
+                  format,
                 }
               }
             }
@@ -84,13 +92,12 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
         options.transform !== false
           ? (code: string, id: string, ...args: any[]) => {
               const [transformOptions] = args
-              const format: 'module' | 'commonjs' =
-                transformOptions?.format || getModuleFormat(id, 'commonjs')
               const result = transform(id, code, {
                 ...options.transform,
-                sourceType: format === 'module' ? 'module' : 'script',
+                sourceType: guessSourceType(id, transformOptions?.format),
                 sourcemap: options.sourcemap,
               })
+
               if (result.errors.length)
                 throw new SyntaxError(
                   result.errors.map((error) => error.message).join('\n'),
@@ -115,3 +122,13 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
     }
   },
 )
+
+function guessSourceType(id: string, format?: string): 'module' | 'script' {
+  if (format === 'module' || format === 'module-typescript') {
+    return 'module'
+  } else if (format === 'commonjs' || format === 'commonjs-typescript') {
+    return 'script'
+  } else {
+    return getModuleFormat(id) === 'module' ? 'module' : 'script'
+  }
+}
