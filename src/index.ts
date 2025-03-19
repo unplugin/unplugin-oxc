@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises'
+import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { ResolverFactory } from 'oxc-resolver'
@@ -6,6 +6,7 @@ import { transform } from 'oxc-transform'
 import { createUnplugin, type UnpluginInstance } from 'unplugin'
 import { createFilter } from 'unplugin-utils'
 import { resolveOptions, type Options } from './core/options'
+import { getModuleFormat } from './core/utils'
 import type { RenderedChunk } from 'rollup'
 
 export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
@@ -34,7 +35,7 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
 
       resolveId:
         options.resolve !== false
-          ? async (id, importer) => {
+          ? (id, importer, resolveOptions: any) => {
               if (!options.resolveNodeModules && id[0] !== '.' && id[0] !== '/')
                 return
 
@@ -48,20 +49,16 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                   '.json',
                   '.node',
                 ],
-                conditionNames: [
-                  'import',
-                  'require',
-                  'browser',
-                  'node',
-                  'default',
-                ],
+                conditionNames: resolveOptions?.conditions
+                  ? Array.from(resolveOptions.conditions)
+                  : ['import', 'require', 'browser', 'node', 'default'],
                 builtinModules: true,
                 ...options.resolve,
               })
               const directory = importer
                 ? path.dirname(importer)
                 : process.cwd()
-              const resolved = await resolver.async(directory, id)
+              const resolved = resolver.sync(directory, id)
               if (resolved.error?.startsWith('Builtin module')) {
                 return {
                   id,
@@ -70,7 +67,12 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 }
               }
 
-              if (resolved.path) return resolved.path
+              if (resolved.path) {
+                return {
+                  id: resolved.path,
+                  format: getModuleFormat(resolved.path, resolved.moduleType),
+                }
+              }
             }
           : undefined,
 
@@ -80,9 +82,13 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
 
       transform:
         options.transform !== false
-          ? (code, id) => {
+          ? (code: string, id: string, ...args: any[]) => {
+              const [transformOptions] = args
+              const format: 'module' | 'commonjs' =
+                transformOptions?.format || getModuleFormat(id, 'commonjs')
               const result = transform(id, code, {
                 ...options.transform,
+                sourceType: format === 'module' ? 'module' : 'script',
                 sourcemap: options.sourcemap,
               })
               if (result.errors.length)
@@ -100,9 +106,9 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
         options(config) {
           config.sourcemap ||= options.sourcemap
         },
-        async load(id) {
+        load(id) {
           if (!filter(id)) return
-          const contents = await readFile(id, 'utf8')
+          const contents = readFileSync(id, 'utf8')
           return contents
         },
       },
