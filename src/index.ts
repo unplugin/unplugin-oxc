@@ -123,12 +123,15 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
   },
 )
 
-function guessSourceType(id: string, format?: string): 'module' | 'script' {
+function guessSourceType(
+  id: string,
+  format?: string,
+): 'module' | 'script' | undefined {
   if (format === 'module' || format === 'module-typescript') {
     return 'module'
   } else if (format === 'commonjs' || format === 'commonjs-typescript') {
     return 'script'
-  } else {
-    return getModuleFormat(id) === 'module' ? 'module' : 'script'
   }
+  const moduleFormat = getModuleFormat(id)
+  if (moduleFormat) return moduleFormat === 'module' ? 'module' : 'script'
 }
