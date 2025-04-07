@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "oxc-minify": "^0.62.0",
-    "oxc-resolver": "^5.1.0",
+    "oxc-resolver": "^5.1.1",
     "oxc-transform": "^0.62.0",
     "unplugin": "^2.2.2",
     "unplugin-utils": "^0.2.4"
@@ -86,13 +86,13 @@
     "@sxzz/test-utils": "^0.5.4",
     "@types/node": "^22.14.0",
     "bumpp": "^10.1.0",
-    "eslint": "^9.23.0",
+    "eslint": "^9.24.0",
     "prettier": "^3.5.3",
     "rollup": "^4.39.0",
     "tinyexec": "^1.0.1",
-    "tsdown": "^0.7.2",
+    "tsdown": "^0.7.5",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "unloader": "^0.4.3",
     "vite": "^6.2.5",
     "vitest": "^3.1.1"
