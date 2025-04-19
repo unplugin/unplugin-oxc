@@ -1,6 +1,6 @@
 {
   "name": "unplugin-oxc",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "packageManager": "pnpm@10.8.1",
   "description": "Oxc integration for unplugin.",
   "type": "module",
