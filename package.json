@@ -74,27 +74,27 @@
     }
   },
   "dependencies": {
-    "oxc-minify": "^0.67.0",
+    "oxc-minify": "^0.68.1",
     "oxc-resolver": "^6.0.2",
-    "oxc-transform": "^0.67.0",
+    "oxc-transform": "^0.68.1",
     "unplugin": "^2.3.2",
     "unplugin-utils": "^0.2.4"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^6.1.2",
+    "@sxzz/eslint-config": "^6.2.0",
     "@sxzz/prettier-config": "^2.2.1",
-    "@sxzz/test-utils": "^0.5.5",
+    "@sxzz/test-utils": "^0.5.6",
     "@types/node": "^22.15.3",
     "bumpp": "^10.1.0",
-    "eslint": "^9.25.1",
+    "eslint": "^9.26.0",
     "prettier": "^3.5.3",
     "rollup": "^4.40.1",
     "tinyexec": "^1.0.1",
-    "tsdown": "^0.10.0",
-    "tsx": "^4.19.3",
+    "tsdown": "^0.10.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "unloader": "^0.4.4",
-    "vite": "^6.3.3",
+    "vite": "^6.3.4",
     "vitest": "^3.1.2"
   },
   "engines": {
