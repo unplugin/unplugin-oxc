@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "oxc-minify": "^0.68.1",
-    "oxc-resolver": "^6.0.2",
+    "oxc-resolver": "^8.0.0",
     "oxc-transform": "^0.68.1",
     "unplugin": "^2.3.2",
     "unplugin-utils": "^0.2.4"
