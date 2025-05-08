@@ -7,6 +7,7 @@ const node = /* @__PURE__ */ React.createElement("div", null);
 function foo() {}
 
 const num = 10;
+const fn = function() {};
 let Color = /* @__PURE__ */ function(Color) {
 	Color[Color["Red"] = 1] = "Red";
 	Color[Color["Green"] = 2] = "Green";

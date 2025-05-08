@@ -4,6 +4,8 @@ export * from './mod'
 
 export const num: number = 10
 
+const fn = () => {}
+
 export enum Color {
   Red = 1,
   Green = 2,
