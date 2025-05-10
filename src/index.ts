@@ -114,6 +114,11 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
           config.sourcemap ||= options.sourcemap
         },
         load(id) {
+          if (id.endsWith('.json')) {
+            const code = readFileSync(id, 'utf8')
+            return { code, format: 'json' }
+          }
+
           if (!filter(id)) return
           const contents = readFileSync(id, 'utf8')
           return contents
