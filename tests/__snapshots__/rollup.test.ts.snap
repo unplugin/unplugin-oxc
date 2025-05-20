@@ -6,6 +6,7 @@ const node = /* @__PURE__ */ React.createElement("div", null);
 
 function foo() {}
 
+// @ts-nocheck
 const num = 10;
 const fn = function() {};
 let Color = /* @__PURE__ */ function(Color) {
