@@ -74,9 +74,9 @@
     }
   },
   "dependencies": {
-    "oxc-minify": "^0.70.0",
+    "oxc-minify": "^0.72.0",
     "oxc-resolver": "^10.0.0",
-    "oxc-transform": "^0.70.0",
+    "oxc-transform": "^0.72.0",
     "unplugin": "^2.3.4",
     "unplugin-utils": "^0.2.4"
   },
@@ -84,13 +84,13 @@
     "@sxzz/eslint-config": "^7.0.1",
     "@sxzz/prettier-config": "^2.2.1",
     "@sxzz/test-utils": "^0.5.6",
-    "@types/node": "^22.15.19",
+    "@types/node": "^22.15.21",
     "bumpp": "^10.1.1",
     "eslint": "^9.27.0",
     "prettier": "^3.5.3",
-    "rollup": "^4.41.0",
+    "rollup": "^4.41.1",
     "tinyexec": "^1.0.1",
-    "tsdown": "^0.11.12",
+    "tsdown": "^0.12.3",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "unloader": "^0.4.5",
