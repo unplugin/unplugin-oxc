@@ -13,5 +13,8 @@ export function getModuleFormat(
       return 'commonjs'
     case '.json':
       return 'json'
+    case '.jsx':
+    case '.tsx':
+      return 'module'
   }
 }

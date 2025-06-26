@@ -1,7 +1,7 @@
 {
   "name": "unplugin-oxc",
   "version": "0.4.5",
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@10.12.3",
   "description": "Oxc integration for unplugin.",
   "type": "module",
   "keywords": [
@@ -74,28 +74,28 @@
     }
   },
   "dependencies": {
-    "oxc-minify": "^0.72.2",
-    "oxc-resolver": "^11.0.0",
-    "oxc-transform": "^0.72.2",
+    "oxc-minify": "^0.75.0",
+    "oxc-resolver": "^11.3.0",
+    "oxc-transform": "^0.75.0",
     "unplugin": "^2.3.5",
     "unplugin-utils": "^0.2.4"
   },
   "devDependencies": {
-    "@sxzz/eslint-config": "^7.0.1",
-    "@sxzz/prettier-config": "^2.2.1",
+    "@sxzz/eslint-config": "^7.0.4",
+    "@sxzz/prettier-config": "^2.2.3",
     "@sxzz/test-utils": "^0.5.6",
-    "@types/node": "^22.15.29",
-    "bumpp": "^10.1.1",
-    "eslint": "^9.28.0",
-    "prettier": "^3.5.3",
-    "rollup": "^4.41.1",
+    "@types/node": "^24.0.4",
+    "bumpp": "^10.2.0",
+    "eslint": "^9.29.0",
+    "prettier": "^3.6.1",
+    "rollup": "^4.44.1",
     "tinyexec": "^1.0.1",
-    "tsdown": "^0.12.5",
-    "tsx": "^4.19.4",
+    "tsdown": "^0.12.9",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "unloader": "^0.4.5",
-    "vite": "^6.3.5",
-    "vitest": "^3.1.4"
+    "vite": "^7.0.0",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=20.18.0"

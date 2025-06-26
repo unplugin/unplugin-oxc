@@ -39,6 +39,7 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
                 ? Array.from(resolveOptions.conditions)
                 : ['import', 'require', 'browser', 'node', 'default'],
               builtinModules: true,
+              moduleType: true,
               ...options.resolve,
             })
             const directory = importer ? path.dirname(importer) : process.cwd()

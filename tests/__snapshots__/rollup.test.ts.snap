@@ -36,12 +36,13 @@ function foo(){return 100}try{foo()}catch(e){}export{foo};
 //# sourceMappingURL=entry-minify.js.map
 
 // entry-minify.js.map
-{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  foo()\\n} catch (err) {}\\n"],"names":["err"],"mappings":"AAAO,SAAS,KAAc,CACrB,MAAA,IACR,CAED,GAAI,CACG,KAAA,AACN,OAAQA,EAAK,CAAA"}"
+{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  foo()\\n} catch (err) {}\\n"],"names":["err"],"mappings":"AAAO,SAAS,KAAc,CAC5B,MAAO,IACR,CAED,GAAI,CACF,KAAK,AACN,OAAQA,EAAK,CAAA"}"
 `;
 
 exports[`rollup > entry-resolve.ts 1`] = `
 "// entry-resolve.js
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import assert from 'assert';
 
 // @ts-check
@@ -89,6 +90,7 @@ var prettier = {
       },
     },
   ],
+  plugins: [fileURLToPath(import.meta.resolve('@prettier/plugin-oxc'))],
 };
 
 console.log(path, assert, prettier);
