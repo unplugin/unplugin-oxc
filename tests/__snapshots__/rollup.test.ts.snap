@@ -8,7 +8,7 @@ function foo() {}
 
 // @ts-nocheck
 const num = 10;
-const fn = function() {};
+const fn = () => {};
 let Color = /* @__PURE__ */ function(Color) {
 	Color[Color["Red"] = 1] = "Red";
 	Color[Color["Green"] = 2] = "Green";

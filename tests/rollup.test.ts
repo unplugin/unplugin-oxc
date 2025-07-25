@@ -15,7 +15,7 @@ describe('rollup', async () => {
             resolveNodeModules: id.includes('resolve'),
             sourcemap: id.includes('minify'),
             transform: {
-              target: 'es5',
+              target: 'es6',
               jsx: {
                 runtime: 'classic',
               },
