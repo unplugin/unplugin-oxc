@@ -33,16 +33,16 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./vite": "./dist/vite.js",
-    "./webpack": "./dist/webpack.js",
-    "./rspack": "./dist/rspack.js",
-    "./rollup": "./dist/rollup.js",
-    "./rolldown": "./dist/rolldown.js",
+    "./api": "./dist/api.js",
     "./esbuild": "./dist/esbuild.js",
     "./farm": "./dist/farm.js",
+    "./rolldown": "./dist/rolldown.js",
+    "./rollup": "./dist/rollup.js",
+    "./rspack": "./dist/rspack.js",
     "./unloader": "./dist/unloader.js",
-    "./api": "./dist/api.js",
-    "./*": "./*"
+    "./vite": "./dist/vite.js",
+    "./webpack": "./dist/webpack.js",
+    "./package.json": "./package.json"
   },
   "typesVersions": {
     "*": {
