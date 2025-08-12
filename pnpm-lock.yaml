@@ -9,13 +9,13 @@ importers:
   .:
     dependencies:
       oxc-minify:
-        specifier: ^0.82.0
+        specifier: '>=0.82.0'
         version: 0.82.0
       oxc-resolver:
         specifier: ^11.6.1
         version: 11.6.1
       oxc-transform:
-        specifier: ^0.82.0
+        specifier: '>=0.82.0'
         version: 0.82.0
       unplugin:
         specifier: ^2.3.5
