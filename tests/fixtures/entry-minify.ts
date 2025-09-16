@@ -3,5 +3,5 @@ export function foo(): number {
 }
 
 try {
-  foo()
+  console.log(foo())
 } catch (err) {}
