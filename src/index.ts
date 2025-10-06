@@ -16,8 +16,9 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
     const filter = createFilter(options.include, options.exclude)
 
     const resolveId =
-      options.resolve !== false
-        ? (id: string, importer?: string, resolveOptions?: any) => {
+      options.resolve === false
+        ? undefined
+        : (id: string, importer?: string, resolveOptions?: any) => {
             if (
               !options.resolveNodeModules &&
               id[0] !== '.' &&
@@ -63,11 +64,11 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
               }
             }
           }
-        : undefined
 
     const transform =
-      options.transform !== false
-        ? (code: string, id: string, ...args: any[]) => {
+      options.transform === false
+        ? undefined
+        : (code: string, id: string, ...args: any[]) => {
             const [transformOptions] = args
             const result = oxcTransform(id, code, {
               ...options.transform,
@@ -82,11 +83,11 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
             }
             return { code: result.code, map: result.map }
           }
-        : undefined
 
     const renderChunk: any =
-      options.minify !== false
-        ? async (code: string, chunk: RenderedChunk) => {
+      options.minify === false
+        ? undefined
+        : async (code: string, chunk: RenderedChunk) => {
             const { minify } = await import('oxc-minify')
             const result = minify(chunk.fileName, code, {
               ...(options.minify === true ? {} : options.minify),
@@ -97,7 +98,6 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
               map: result.map,
             }
           }
-        : undefined
 
     const unloader: Partial<UnloaderPlugin> = {
       options(config) {
