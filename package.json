@@ -1,7 +1,7 @@
 {
   "name": "unplugin-oxc",
   "version": "0.5.3",
-  "packageManager": "pnpm@10.18.1",
+  "packageManager": "pnpm@10.18.2",
   "description": "Oxc integration for unplugin.",
   "type": "module",
   "keywords": [
@@ -84,7 +84,7 @@
     "@sxzz/eslint-config": "^7.2.7",
     "@sxzz/prettier-config": "^2.2.4",
     "@sxzz/test-utils": "^0.5.11",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.7.2",
     "bumpp": "^10.3.1",
     "eslint": "^9.37.0",
     "prettier": "^3.6.2",
