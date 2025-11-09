@@ -1,10 +1,10 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+import { toArray } from '@antfu/utils'
 import { ResolverFactory } from 'oxc-resolver'
 import { transform as oxcTransform } from 'oxc-transform'
 import { createUnplugin, type UnpluginInstance } from 'unplugin'
-import { createFilter } from 'unplugin-utils'
 import { resolveOptions, type Options } from './core/options'
 import { getModuleFormat } from './core/utils'
 import type { RenderedChunk } from 'rollup'
@@ -13,7 +13,6 @@ import type { Plugin as UnloaderPlugin } from 'unloader'
 export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
   (rawOptions = {}, { framework }) => {
     const options = resolveOptions(rawOptions, framework)
-    const filter = createFilter(options.include, options.exclude)
 
     const resolveId =
       options.resolve === false
@@ -103,25 +102,32 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       options(config) {
         config.sourcemap ||= options.sourcemap
       },
-      load(id) {
-        if (id.endsWith('.json')) {
-          let code = readFileSync(id, 'utf8')
+      load: {
+        filter: {
+          id: {
+            include: [/\.json$/, ...toArray(options.include)],
+            exclude: options.exclude,
+          },
+        },
+        handler(id) {
+          if (id.endsWith('.json')) {
+            let code = readFileSync(id, 'utf8')
 
-          const json = JSON.parse(code)
-          code = `const json = ${code}\nexport default json\n`
-          const i = 0
-          for (const key of Object.keys(json)) {
-            const sanitizedKey = `_${key.replaceAll(/\W/g, '_')}${i}`
-            code +=
-              `\nconst ${sanitizedKey} = json[${JSON.stringify(key)}]\n` +
-              `export { ${sanitizedKey} as ${JSON.stringify(key)} }\n`
+            const json = JSON.parse(code)
+            code = `const json = ${code}\nexport default json\n`
+            const i = 0
+            for (const key of Object.keys(json)) {
+              const sanitizedKey = `_${key.replaceAll(/\W/g, '_')}${i}`
+              code +=
+                `\nconst ${sanitizedKey} = json[${JSON.stringify(key)}]\n` +
+                `export { ${sanitizedKey} as ${JSON.stringify(key)} }\n`
+            }
+            return { code, format: 'module' }
           }
-          return { code, format: 'module' }
-        }
 
-        if (!filter(id)) return
-        const contents = readFileSync(id, 'utf8')
-        return contents
+          const contents = readFileSync(id, 'utf8')
+          return contents
+        },
       },
     }
 
@@ -130,11 +136,14 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
       enforce: options.enforce,
 
       resolveId,
-
-      transformInclude(id) {
-        return filter(id)
-      },
-      transform,
+      transform: transform
+        ? {
+            filter: {
+              id: { include: options.include, exclude: options.exclude },
+            },
+            handler: transform,
+          }
+        : undefined,
 
       rollup: { renderChunk },
       rolldown: { renderChunk },

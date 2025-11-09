@@ -1,8 +1,7 @@
 import type { MinifyOptions } from 'oxc-minify'
 import type { NapiResolveOptions } from 'oxc-resolver'
 import type { TransformOptions } from 'oxc-transform'
-import type { UnpluginContextMeta } from 'unplugin'
-import type { FilterPattern } from 'unplugin-utils'
+import type { FilterPattern, UnpluginContextMeta } from 'unplugin'
 
 export interface Options {
   /**

@@ -20,10 +20,10 @@ importers:
       unplugin:
         specifier: ^2.3.10
         version: 2.3.10
-      unplugin-utils:
-        specifier: ^0.3.1
-        version: 0.3.1
     devDependencies:
+      '@antfu/utils':
+        specifier: ^9.3.0
+        version: 9.3.0
       '@sxzz/eslint-config':
         specifier: ^7.2.8
         version: 7.2.8(@types/eslint@9.6.1)(@typescript-eslint/eslint-plugin@8.46.3(@typescript-eslint/parser@8.46.3(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/parser@8.46.3(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/utils@8.46.3(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(@unocss/eslint-plugin@65.4.0(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(eslint-import-resolver-node@0.3.9)(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
@@ -61,8 +61,8 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       unloader:
-        specifier: ^0.5.0
-        version: 0.5.0
+        specifier: ^0.7.0
+        version: 0.7.0
       vite:
         specifier: ^7.2.2
         version: 7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.29.3)(tsx@4.20.6)(yaml@2.8.1)
@@ -74,6 +74,9 @@ packages:
 
   '@antfu/utils@8.1.1':
     resolution: {integrity: sha512-Mex9nXf9vR6AhcXmMrlz/HVgYYZpVGJ6YlPgwl7UnaFpnshXs6EK/oa5Gpf3CzENMjkvEx2tQtntGnb7UtSTOQ==}
+
+  '@antfu/utils@9.3.0':
+    resolution: {integrity: sha512-9hFT4RauhcUzqOE4f1+frMKLZrgNog5b06I7VmZQV1BkvwvqrbC8EBZf3L1eEL2AKb6rNKjER0sEvJiSP1FXEA==}
 
   '@babel/generator@7.28.5':
     resolution: {integrity: sha512-3EwLFhZ38J4VyIP6WNtt2kUdW9dokXA9Cr4IVIFHuCpZ3H8/YFOl5JjZHisrn1fATPBmKKqXzDFvh9fUwHz6CQ==}
@@ -2619,9 +2622,9 @@ packages:
   unist-util-visit@5.0.0:
     resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
 
-  unloader@0.5.0:
-    resolution: {integrity: sha512-qHCbYaEccxST9/xbbpkWvvjNAyuBx/tT1Zvoq2eDt9r30aWacdyTzB0A0yBSEUx7L74aFRnThoK00+fFXsPCpw==}
-    engines: {node: ^18.19.0 || >=20.6.0}
+  unloader@0.7.0:
+    resolution: {integrity: sha512-5QiA7O3Ik9vsu0fANYtaQHGUi4qx/jkpaNTG5S+hM1Y712+QOmlsOyz2kCs9a3OR+qOIIl3Zt4D0NoMu4Hx5OA==}
+    engines: {node: '>=20.19.0'}
 
   unplugin-utils@0.3.1:
     resolution: {integrity: sha512-5lWVjgi6vuHhJ526bI4nlCOmkCIF3nnfXkCMDeMJrtdvxTs6ZFCM8oNufGTsDbKv/tJ/xj8RpvXjRuPBZJuJog==}
@@ -2777,6 +2780,8 @@ snapshots:
 
   '@antfu/utils@8.1.1':
     optional: true
+
+  '@antfu/utils@9.3.0': {}
 
   '@babel/generator@7.28.5':
     dependencies:
@@ -5362,11 +5367,12 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  unloader@0.5.0:
+  unloader@0.7.0:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       birpc: 2.8.0
       debug: 4.4.3
+      picomatch: 4.0.3
       quansync: 0.2.11
       unconfig: 7.4.0
     transitivePeerDependencies:
