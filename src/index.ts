@@ -3,7 +3,7 @@ import path from 'node:path'
 import process from 'node:process'
 import { toArray } from '@antfu/utils'
 import { ResolverFactory } from 'oxc-resolver'
-import { transform as oxcTransform } from 'oxc-transform'
+import { transformSync as oxcTransformSync } from 'oxc-transform'
 import { createUnplugin, type UnpluginInstance } from 'unplugin'
 import { resolveOptions, type Options } from './core/options'
 import { getModuleFormat } from './core/utils'
@@ -69,7 +69,7 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
         ? undefined
         : (code: string, id: string, ...args: any[]) => {
             const [transformOptions] = args
-            const result = oxcTransform(id, code, {
+            const result = oxcTransformSync(id, code, {
               ...options.transform,
               sourceType: guessSourceType(id, transformOptions?.format),
               sourcemap: options.sourcemap,
@@ -88,7 +88,7 @@ export const Oxc: UnpluginInstance<Options | undefined, false> = createUnplugin(
         ? undefined
         : async (code: string, chunk: RenderedChunk) => {
             const { minify } = await import('oxc-minify')
-            const result = minify(chunk.fileName, code, {
+            const result = await minify(chunk.fileName, code, {
               ...(options.minify === true ? {} : options.minify),
               sourcemap: options.sourcemap,
             })
