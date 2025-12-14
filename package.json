@@ -1,9 +1,20 @@
 {
   "name": "unplugin-oxc",
-  "version": "0.5.5",
-  "packageManager": "pnpm@10.24.0",
-  "description": "Oxc integration for unplugin.",
   "type": "module",
+  "version": "0.5.5",
+  "packageManager": "pnpm@10.25.0",
+  "description": "Oxc integration for unplugin.",
+  "author": "Kevin Deng <sxzz@sxzz.moe>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/sxzz",
+  "homepage": "https://github.com/unplugin/unplugin-oxc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unplugin/unplugin-oxc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unplugin/unplugin-oxc/issues"
+  },
   "keywords": [
     "unplugin",
     "vite",
@@ -14,23 +25,6 @@
     "esbuild",
     "farm"
   ],
-  "license": "MIT",
-  "homepage": "https://github.com/unplugin/unplugin-oxc#readme",
-  "bugs": {
-    "url": "https://github.com/unplugin/unplugin-oxc/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/unplugin/unplugin-oxc.git"
-  },
-  "author": "Kevin Deng <sxzz@sxzz.moe>",
-  "funding": "https://github.com/sponsors/sxzz",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
   "exports": {
     ".": "./dist/index.mjs",
     "./api": "./dist/api.mjs",
@@ -44,6 +38,9 @@
     "./webpack": "./dist/webpack.mjs",
     "./package.json": "./package.json"
   },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "typesVersions": {
     "*": {
       "*": [
@@ -52,8 +49,14 @@
       ]
     }
   },
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   },
   "scripts": {
     "lint": "eslint --cache .",
@@ -74,31 +77,28 @@
     }
   },
   "dependencies": {
-    "oxc-minify": ">=0.99.0",
-    "oxc-resolver": "^11.14.0",
-    "oxc-transform": ">=0.99.0",
+    "oxc-minify": ">=0.102.0",
+    "oxc-resolver": "^11.15.0",
+    "oxc-transform": ">=0.102.0",
     "unplugin": "^2.3.11"
   },
   "devDependencies": {
     "@antfu/utils": "^9.3.0",
-    "@sxzz/eslint-config": "^7.4.0",
+    "@sxzz/eslint-config": "^7.4.1",
     "@sxzz/prettier-config": "^2.2.6",
-    "@sxzz/test-utils": "^0.5.13",
-    "@types/node": "^24.10.1",
+    "@sxzz/test-utils": "^0.5.14",
+    "@types/node": "^25.0.2",
     "bumpp": "^10.3.2",
-    "eslint": "^9.39.1",
-    "prettier": "^3.7.3",
+    "eslint": "^9.39.2",
+    "prettier": "^3.7.4",
     "rollup": "^4.53.3",
     "tinyexec": "^1.0.2",
-    "tsdown": "^0.16.8",
-    "tsx": "^4.20.6",
+    "tsdown": "^0.17.4",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "unloader": "^0.8.0",
-    "vite": "^7.2.4",
-    "vitest": "^4.0.14"
-  },
-  "engines": {
-    "node": ">=20.19.0"
+    "unloader": "^0.8.2",
+    "vite": "^7.2.7",
+    "vitest": "^4.0.15"
   },
   "prettier": "@sxzz/prettier-config"
 }
