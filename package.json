@@ -94,7 +94,6 @@
     "rollup": "^4.53.3",
     "tinyexec": "^1.0.2",
     "tsdown": "^0.17.4",
-    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "unloader": "^0.8.2",
     "vite": "^7.2.7",
