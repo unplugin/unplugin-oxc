@@ -84,7 +84,7 @@
   },
   "devDependencies": {
     "@antfu/utils": "^9.3.0",
-    "@sxzz/eslint-config": "^7.4.1",
+    "@sxzz/eslint-config": "^7.4.3",
     "@sxzz/prettier-config": "^2.2.6",
     "@sxzz/test-utils": "^0.5.14",
     "@types/node": "^25.0.2",
