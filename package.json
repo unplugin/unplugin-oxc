@@ -2,7 +2,7 @@
   "name": "unplugin-oxc",
   "type": "module",
   "version": "0.5.6",
-  "packageManager": "pnpm@10.25.0",
+  "packageManager": "pnpm@10.26.1",
   "description": "Oxc integration for unplugin.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
@@ -77,27 +77,27 @@
     }
   },
   "dependencies": {
-    "oxc-minify": ">=0.102.0",
-    "oxc-resolver": "^11.15.0",
-    "oxc-transform": ">=0.102.0",
+    "oxc-minify": ">=0.104.0",
+    "oxc-resolver": "^11.16.0",
+    "oxc-transform": ">=0.104.0",
     "unplugin": "^2.3.11"
   },
   "devDependencies": {
     "@antfu/utils": "^9.3.0",
     "@sxzz/eslint-config": "^7.4.3",
     "@sxzz/prettier-config": "^2.2.6",
-    "@sxzz/test-utils": "^0.5.14",
-    "@types/node": "^25.0.2",
+    "@sxzz/test-utils": "^0.5.15",
+    "@types/node": "^25.0.3",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
     "prettier": "^3.7.4",
-    "rollup": "^4.53.3",
+    "rollup": "^4.54.0",
     "tinyexec": "^1.0.2",
-    "tsdown": "^0.17.4",
+    "tsdown": "^0.18.2",
     "typescript": "^5.9.3",
-    "unloader": "^0.8.2",
-    "vite": "^7.2.7",
-    "vitest": "^4.0.15"
+    "unloader": "^0.8.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   },
   "prettier": "@sxzz/prettier-config"
 }
