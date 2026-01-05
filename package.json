@@ -2,7 +2,7 @@
   "name": "unplugin-oxc",
   "type": "module",
   "version": "0.5.7",
-  "packageManager": "pnpm@10.26.2",
+  "packageManager": "pnpm@10.27.0",
   "description": "Oxc integration for unplugin.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
   "license": "MIT",
@@ -77,9 +77,9 @@
     }
   },
   "dependencies": {
-    "oxc-minify": ">=0.105.0",
+    "oxc-minify": ">=0.106.0",
     "oxc-resolver": "^11.16.2",
-    "oxc-transform": ">=0.105.0",
+    "oxc-transform": ">=0.106.0",
     "unplugin": "^2.3.11"
   },
   "devDependencies": {
@@ -93,7 +93,7 @@
     "prettier": "^3.7.4",
     "rollup": "^4.54.0",
     "tinyexec": "^1.0.2",
-    "tsdown": "^0.18.3",
+    "tsdown": "^0.18.4",
     "typescript": "^5.9.3",
     "unloader": "^0.8.3",
     "vite": "^7.3.0",
