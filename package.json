@@ -80,7 +80,7 @@
     "oxc-minify": ">=0.110.0",
     "oxc-resolver": "^11.16.4",
     "oxc-transform": ">=0.110.0",
-    "unplugin": "^2.3.11"
+    "unplugin": "^3.0.0"
   },
   "devDependencies": {
     "@antfu/utils": "^9.3.0",
