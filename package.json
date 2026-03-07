@@ -1,7 +1,7 @@
 {
   "name": "unplugin-oxc",
   "type": "module",
-  "version": "0.5.7",
+  "version": "0.6.0",
   "packageManager": "pnpm@10.30.3",
   "description": "Oxc integration for unplugin.",
   "author": "Kevin Deng <sxzz@sxzz.moe>",
