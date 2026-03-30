@@ -87,7 +87,7 @@
     "tinyexec": "^1.0.4",
     "tsdown": "^0.21.7",
     "tsdown-preset-sxzz": "^0.5.0",
-    "typescript": "^5.9.3",
+    "typescript": "^6.0.2",
     "unloader": "^0.8.3",
     "vite": "^8.0.3",
     "vitest": "^4.1.2"
