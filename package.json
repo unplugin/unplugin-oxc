@@ -83,7 +83,7 @@
     "bumpp": "^11.0.1",
     "eslint": "^10.1.0",
     "prettier": "^3.8.1",
-    "rollup": "^4.60.0",
+    "rollup": "^4.60.1",
     "tinyexec": "^1.0.4",
     "tsdown": "^0.21.7",
     "tsdown-preset-sxzz": "^0.5.0",
