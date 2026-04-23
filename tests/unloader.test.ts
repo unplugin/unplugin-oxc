@@ -15,7 +15,7 @@ describe.skipIf(process.version.startsWith('v20'))('unloader', () => {
   test('unloader sync', async () => {
     const { exitCode } = await exec(
       'node',
-      ['--require', 'unloader/register-sync', 'tests/fixtures/unloader.cts'],
+      ['--require', 'unloader/register', 'tests/fixtures/unloader.cts'],
       { nodeOptions: { stdio: 'inherit' } },
     )
     expect(exitCode).toBe(0)
