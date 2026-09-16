@@ -4,7 +4,7 @@
  * @module
  */
 
-import { Oxc } from './index'
+import { Oxc } from './index.ts'
 
 /**
  * Rolldown plugin

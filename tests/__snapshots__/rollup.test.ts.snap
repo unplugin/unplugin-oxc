@@ -36,7 +36,7 @@ function e(){return 100}try{console.log(e())}catch(e){}export{e as foo};
 //# sourceMappingURL=entry-minify.js.map
 
 // entry-minify.js.map
-{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  console.log(foo())\\n} catch (err) {}\\n"],"names":["foo","err"],"mappings":"AAAO,SAASA,GAAc,CAC5B,MAAO,KAGT,GAAI,CACF,QAAQ,IAAIA,GAAK,CAAC,OACXC,EAAK"}"
+{"version":3,"file":"entry-minify.js","sources":["tests/fixtures/entry-minify.ts"],"sourcesContent":["export function foo(): number {\\n  return 100\\n}\\n\\ntry {\\n  console.log(foo())\\n} catch (err) {}\\n"],"names":["foo","err"],"mappings":"AAAO,SAASA,GAAc,CAC5B,MAAO,IACT,CAEA,GAAI,CACF,QAAQ,IAAIA,GAAK,CACnB,OAASC,EAAK,CAAC"}"
 `;
 
 exports[`rollup > entry-resolve.ts 1`] = `
@@ -47,9 +47,8 @@ import process from 'node:process';
 import { fileURLToPath } from 'node:url';
 import assert from 'assert';
 
-//#region rolldown:runtime
-var __require = /* @__PURE__ */ createRequire(import.meta.url);
-
+//#region \\0rolldown/runtime.js
+var __require = /* #__PURE__ */ (() => createRequire(import.meta.url))();
 //#endregion
 //#region src/index.ts
 const resolveOpts = { paths: [process.cwd()] };
@@ -67,42 +66,50 @@ function resolvePlugin(pkg) {
 	} catch {}
 }
 const plugins = [fileURLToPath(import.meta.resolve("@prettier/plugin-oxc"))];
+const overrides = [{
+	files: [
+		"**/node_modules/**",
+		"**/dist/**",
+		"**/coverage/**",
+		"**/temp/**",
+		"**/.vitepress/cache/**",
+		"**/.nuxt/**",
+		"**/.vercel/**",
+		"**/.changeset/**",
+		"**/.idea/**",
+		"**/.output/**",
+		"**/.vite-inspect/**",
+		"output/**",
+		"__snapshots__/**",
+		"**/CHANGELOG*.md",
+		"**/*.min.*",
+		"**/LICENSE*",
+		"**/__snapshots__",
+		"**/auto-import?(s).d.ts",
+		"**/components.d.ts",
+		"**/typed-router.d.ts",
+		"**/pnpm-lock.yaml"
+	],
+	options: { requirePragma: true }
+}, {
+	files: ["**/jsr.json"],
+	options: { parser: "json-stringify" }
+}];
 if (isInstalled("astro")) {
 	const plugin = resolvePlugin("prettier-plugin-astro");
-	if (plugin) plugins.push(plugin);
+	if (plugin) {
+		plugins.push(plugin);
+		overrides.push({
+			files: "*.astro",
+			options: { parser: "astro" }
+		});
+	}
 }
 var src_default = {
 	semi: false,
 	singleQuote: true,
 	trailingComma: "all",
-	overrides: [{
-		files: [
-			"**/node_modules/**",
-			"**/dist/**",
-			"**/coverage/**",
-			"**/temp/**",
-			"**/.vitepress/cache/**",
-			"**/.nuxt/**",
-			"**/.vercel/**",
-			"**/.changeset/**",
-			"**/.idea/**",
-			"**/.output/**",
-			"**/.vite-inspect/**",
-			"output/**",
-			"**/CHANGELOG*.md",
-			"**/*.min.*",
-			"**/LICENSE*",
-			"**/__snapshots__",
-			"**/auto-import?(s).d.ts",
-			"**/components.d.ts",
-			"**/typed-router.d.ts",
-			"**/pnpm-lock.yaml"
-		],
-		options: { requirePragma: true }
-	}, {
-		files: ["**/jsr.json"],
-		options: { parser: "json-stringify" }
-	}],
+	overrides,
 	plugins
 };
 

@@ -1,5 +1,5 @@
 import { defineConfig } from 'unloader'
-import Oxc from './src/unloader'
+import Oxc from './src/unloader.ts'
 
 export default defineConfig({
   plugins: [

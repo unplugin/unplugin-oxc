@@ -1,7 +1,7 @@
 import path from 'node:path'
 import { rollupBuild, testFixtures } from '@sxzz/test-utils'
 import { describe } from 'vitest'
-import Oxc from '../src/rollup'
+import Oxc from '../src/rollup.ts'
 
 describe('rollup', async () => {
   const { dirname } = import.meta
