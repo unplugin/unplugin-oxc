@@ -24,6 +24,7 @@
     "esbuild",
     "farm"
   ],
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./api": "./dist/api.mjs",
