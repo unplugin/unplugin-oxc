@@ -86,7 +86,7 @@
     "@sxzz/eslint-config": "^8.6.0",
     "@sxzz/prettier-config": "^2.3.3",
     "@sxzz/test-utils": "^0.5.19",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.0.0",
     "@typescript/native-preview": "npm:typescript@^7.0.2",
     "bumpp": "^12.3.0",
     "eslint": "^10.10.0",
